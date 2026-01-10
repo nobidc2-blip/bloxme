@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Something Special Awaits</title>
+
+<style>
+/* ===== BODY + PARALLAX BG ===== */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background:
+        linear-gradient(rgba(6,11,46,0.75), rgba(6,11,46,0.75)),
+        url("bg.JPG") center / cover no-repeat;
+    color: white;
+    text-align: center;
+    animation: bgMove 35s ease-in-out infinite;
+}
+
+@keyframes bgMove {
+    0%   { background-position: center 45%; }
+    50%  { background-position: center 55%; }
+    100% { background-position: center 45%; }
+}
+
+/* ===== LIGHTNING EFFECT ===== */
+.lightning {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.lightning::before,
+.lightning::after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 120%;
+    top: -10%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #b36bff,
+        white,
+        #b36bff,
+        transparent
+    );
+    opacity: 0;
+    filter: blur(1px);
+    animation: lightningFlash 7s infinite;
+}
+
+.lightning::before {
+    left: 25%;
+}
+
+.lightning::after {
+    left: 70%;
+    animation-delay: 3.5s;
+}
+
+@keyframes lightningFlash {
+    0%, 94%, 100% {
+        opacity: 0;
+    }
+    95% {
+        opacity: 1;
+        transform: skewX(-10deg);
+    }
+    96% {
+        opacity: 0;
+    }
+}
+
+/* ===== TEXT ===== */
+h1 {
+    margin-top: 40px;
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-size: 15px;
+    opacity: 0.85;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: #1e2f66;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 20px;
+    background: linear-gradient(
+        45deg,
+        #8a4dff,
+        #b07cff,
+        #8a4dff
+    );
+    opacity: 0;
+    filter: blur(14px);
+    transition: opacity 0.35s ease;
+    z-index: -1;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.04);
+}
+
+.card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.card-title {
+    background: linear-gradient(135deg, #ff6fa3, #ff8fbc);
+    padding: 14px;
+    font-weight: bold;
+}
+
+/* ===== GROUP SECTION ===== */
+.group-section {
+    margin: 70px 20px 60px;
+}
+
+.group-section p {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* ===== GROUP BUTTON ===== */
+.group-btn {
+    background: linear-gradient(135deg, #ff6fa3, #ff8fbc);
+    padding: 16px 34px;
+    border-radius: 18px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.25s ease;
+}
+
+.group-btn::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 22px;
+    background: linear-gradient(
+        45deg,
+        #8a4dff,
+        #b07cff,
+        #8a4dff
+    );
+    filter: blur(12px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.group-btn:hover::after {
+    opacity: 1;
+}
+
+.group-btn:hover {
+    transform: scale(1.08);
+}
+</style>
+</head>
+
+<body>
+
+<!-- LIGHTNING -->
+<div class="lightning"></div>
+
+<h1>Something Special Awaits.</h1>
+<div class="subtitle">
+Hidden rewards, private servers, and secret items — only a few can claim them.
+</div>
+
+<div class="container">
+
+    <!-- ADOPT ME -->
+    <div class="card" onclick="go('https://www.roblox.com/games/920587237/Adopt-Me')">
+        <img src="adm.JPG" alt="Adopt Me">
+        <div class="card-title">Adopt Me</div>
+    </div>
+
+    <!-- PROFILE USER -->
+    <div class="card" onclick="go('https://www.roblox.com/users/4417419566/profile')">
+        <img src="profile.JPG" alt="Profile">
+        <div class="card-title">My Roblox Profile</div>
+    </div>
+
+</div>
+
+<div class="group-section">
+    <p>Join My Group to get even more exclusive rewards!</p>
+    <a class="group-btn" href="https://www.roblox.com/groups/GROUP_ID" target="_blank">
+        MY ROBLOX GROUP
+    </a>
+</div>
+
+<script>
+function go(url) {
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
